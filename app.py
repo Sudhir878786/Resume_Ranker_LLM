@@ -21,4 +21,4 @@ with gr.Blocks() as demo:
     # output = gr.Number(label="Results")
     btn.click(inference, inputs=[job_desc, files], outputs=output)
 
-demo.launch(server_port=7800)
+demo.launch()
