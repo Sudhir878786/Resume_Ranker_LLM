@@ -1,5 +1,6 @@
 
 import re
+import os
 import unicodedata
 import nltk
 import inflect
@@ -7,9 +8,10 @@ from nltk import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import LancasterStemmer, WordNetLemmatizer
 
-nltk.download('wordnet')
-nltk.download('stopwords')
-
+download_path = os.path.join(os.getcwd(), 'nltk_packages')
+nltk.data.path.append(download_path)
+nltk.download('wordnet', download_dir=download_path)
+nltk.download('stopwords', download_dir=download_path)
 
 def remove_non_ascii(words):
     """Remove non-ASCII characters from list of tokenized words"""

@@ -1,10 +1,10 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sentence_transformers import SentenceTransformer
-
+import os
 
 def embedding(documents, embedding='bert'):
     if embedding == 'bert':
-        sbert_model = SentenceTransformer('bert-base-nli-mean-tokens')
+        sbert_model = SentenceTransformer('bert-base-nli-mean-tokens', cache_folder=os.path.join(os.getcwd(), 'embedding'))
 
         document_embeddings = sbert_model.encode(documents)
         return document_embeddings
