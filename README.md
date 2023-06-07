@@ -10,10 +10,10 @@ Install all the dependencies with:
 ./install.sh
 ```
 
-Run the Gradio UI with:
+Run the Streamlilt with:
 
 ```bash
-gradio app.py
+streamlit run app.py
 ```
 
 Or run it from with:

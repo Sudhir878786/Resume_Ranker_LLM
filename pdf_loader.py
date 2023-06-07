@@ -38,3 +38,27 @@ def load_documents(file_paths: list[str] = None, source_dir: str = None):
                 'content': load_single_document(f"{file_path}")
             } for idx, file_path in enumerate(all_files) if file_path[-4:] in ['.txt', '.pdf', '.csv']
         ]
+
+def load_io(file_byte = None):
+    # Loads a single document from file path
+    if file_byte.name[-3:] == 'txt':
+        return file_byte.read().decode("utf-8")
+
+    elif file_byte.name[-3:] == 'pdf':
+        pdfReader = PyPDF2.PdfReader(file_byte)
+        text = ''
+        for page in pdfReader.pages:
+            text += page.extract_text()
+        return text
+
+    else:
+        raise Exception('Invalid file type')
+
+def load_btyes_io(files = None):
+
+    return [
+        {
+            'name': file_btye.name,
+            'content': load_io(file_btye)
+        } for idx, file_btye in enumerate(files) if file_btye.name[-3:] in ['txt', 'pdf']
+    ]

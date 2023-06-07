@@ -84,15 +84,14 @@ def lemmatize_verbs(words):
         lemmas.append(lemma)
     return lemmas
 
-
 def normalize(words):
     words = remove_non_ascii(words)
     words = to_lowercase(words)
     words = remove_punctuation(words)
-    words = replace_numbers(words)
+    # words = replace_numbers(words)
     words = remove_stopwords(words)
-    words = stem_words(words)
-    words = lemmatize_verbs(words)
+    # words = stem_words(words)
+    # words = lemmatize_verbs(words)
     return words
 
 
