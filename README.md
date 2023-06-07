@@ -1,14 +1,13 @@
 ---
-title: Resume Ranker
-emoji: 🏢
-colorFrom: green
-colorTo: pink
-sdk: gradio
-sdk_version: 3.33.1
+title: Resume Ranking
+emoji: 📊
+colorFrom: yellow
+colorTo: indigo
+sdk: streamlit
+sdk_version: 1.21.0
 app_file: app.py
 pinned: false
 ---
-
 
 # resume-ranker
 <hr>
