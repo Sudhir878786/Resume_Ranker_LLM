@@ -8,6 +8,12 @@ def embedding(documents, embedding='bert'):
 
         document_embeddings = sbert_model.encode(documents)
         return document_embeddings
+    
+    if embedding == 'minilm':
+        sbert_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2', cache_folder=os.path.join(os.getcwd(), 'embedding'))
+
+        document_embeddings = sbert_model.encode(documents)
+        return document_embeddings
 
     if embedding == 'tfidf':
         word_vectorizer = TfidfVectorizer(
