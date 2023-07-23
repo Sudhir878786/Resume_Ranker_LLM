@@ -2,6 +2,17 @@ import streamlit as st
 from pdf_loader import load_btyes_io
 from core import pipeline
 
+# Developer Details
+developer_details = {
+    "Sudhir Sharma": {
+        "Education": "B.Tech in Computer Science and Engineering, IIT Bhilai, 2024",
+        "Email": "sudhirsharma@iitbhilai.ac.in",
+        "GitHub": "[GitHub Profile](https://github.com/Sudhir878786)",
+        "LinkedIn": "[LinkedIn Profile](https://www.linkedin.com/in/sudhirsharma87/)"
+    }
+}
+
+
 def inference(query, files, embedding_type):
 
     # pdfReader = PyPDF2.PdfReader(files[0])
@@ -14,6 +25,13 @@ def inference(query, files, embedding_type):
     prob_per_documents = {result['name']: result['similarity'] for result in results}
     return prob_per_documents
 
+st.sidebar.header("Developer Details")
+selected_developer = st.sidebar.selectbox("Select a developer", list(developer_details.keys()))
+st.sidebar.markdown(developer_details[selected_developer]["Education"])
+st.sidebar.markdown(developer_details[selected_developer]["Email"])
+st.sidebar.markdown(developer_details[selected_developer]["GitHub"])
+st.sidebar.markdown(developer_details[selected_developer]["LinkedIn"])
+
 sample_files = [
     "documents/business.pdf",
     "documents/data_science.pdf",
@@ -24,7 +42,8 @@ sample_job_descriptions = {
     """,
     "Data Scientist": """We are seeking a data scientist with expertise in machine learning and statistical analysis. The candidate should have a solid understanding of data manipulation, feature engineering, and model development. Proficiency in Python and popular data science libraries such as NumPy, Pandas, and Scikit-learn is required. Experience with deep learning frameworks like TensorFlow or PyTorch is a plus. Strong analytical and problem-solving skills are essential for this position.
     """
-}    
+}
+
 st.sidebar.header("Sample Files")
 for sample_file in sample_files:
     st.sidebar.markdown(f"[{sample_file}](./sample_files/{sample_file})")
